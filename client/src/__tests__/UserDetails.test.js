@@ -1,3 +1,6 @@
+// Mock window.scrollTo
+global.scrollTo = jest.fn();
+
 import React from "react";
 import { render } from "@testing-library/react";
 // Import Router to handle routing within the test

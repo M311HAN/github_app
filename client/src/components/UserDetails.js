@@ -114,14 +114,14 @@ const UserDetails = () => {
         Back to Search
       </button>
       <div className="card mb-4">
-        <div className="card-body d-flex">
+        <div className="card-body d-flex align-items-center">
           <img
             src={user.avatar_url}
             alt={`Avatar of ${user.login}`}
             className="img-thumbnail mb-3"
             style={{
-              width: "200px",
-              height: "200px",
+              width: "250px",
+              height: "250px",
               objectFit: "cover",
               borderRadius: "50%",
             }}
@@ -140,7 +140,7 @@ const UserDetails = () => {
             )}
             <a
               href={user.html_url}
-              className="btn btn-primary"
+              className="btn btn-success"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -117,7 +117,7 @@ const RepoDetails = ({ owner }) => {
               href={repoDetails.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "green", textDecoration: "underline" }}
+              style={{ color: "#007bff", textDecoration: "underline" }}
             >
               {repoDetails.name}
             </a>
