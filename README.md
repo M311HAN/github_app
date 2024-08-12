@@ -4,6 +4,7 @@
 
 ## Table of Contents
 - [Description](#description)
+- [Project Structure](#project-structure)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Prerequisites](#prerequisites)
@@ -29,6 +30,18 @@ This is my second project using both React and Express to create a Fullstack app
 - Fetch API (or Axios)
 - React
 - JavaScript
+
+## Project Structure
+
+This application is divided into two main directories:
+
+1. Client:
+- The client directory contains the front-end part of the application. It includes all the code related to the user interface (UI) and user experience (UX), typically built using modern front-end frameworks or libraries such as React, Angular, or Vue.js.
+- This part of the application is responsible for interacting with users, capturing input, and displaying data retrieved from the back-end.
+
+2. Server:
+- The server directory houses the back-end of the application. It includes the server-side logic, API endpoints, database interactions, and any other operations that occur on the server.
+- This part of the application handles requests from the front-end, processes data, communicates with external APIs (like GitHub's API), and returns the necessary data to the front-end for display.
 
 ## Features
 
