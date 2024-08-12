@@ -1,59 +1,59 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+// Component to display details of a specific repository
 const RepoDetails = ({ owner }) => {
-  // Get the repo name from the URL parameters
+  // Extract the repository name from the URL parameters
   const { repoName } = useParams();
   // Hook to navigate programmatically
   const navigate = useNavigate();
   // State to store repository details
   const [repoDetails, setRepoDetails] = useState(null);
-  // State to store commits
+  // State to store the last 5 commits
   const [commits, setCommits] = useState([]);
   // State to manage loading status
   const [loading, setLoading] = useState(true);
-  // State to manage any errors
+  // State to manage error messages
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Reset state when component mounts
     resetState();
 
+    // Function to fetch repository details and commits
     const fetchRepoDetails = async () => {
       try {
-        // Fetch repository data for the owner
+        // Fetch repository data
         const repoData = await fetchRepoData(owner);
         // Find the specific repository by name
         const selectedRepo = findRepoByName(repoData, repoName);
         // Set the repository details
         setRepoDetails(selectedRepo);
 
-        // Fetch the commits for the repository and Store the first 5 commits
         const commitsData = await fetchCommitsData(owner, repoName);
+        // Store the last 5 commits
         setCommits(commitsData.slice(0, 5));
       } catch (error) {
-        // Set any errors encountered during fetching
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
 
-    // Initiate fetching of repository details, commits and
-    // Dependencies: refetch data when owner or repoName changes
+    // Fetch repository details and commits on component mount
+    // Dependency array ensures effect runs when owner or repoName changes
     fetchRepoDetails();
   }, [owner, repoName]);
 
+  // Function to reset the component state
   const resetState = () => {
-    // Reset state values to initial state
     setRepoDetails(null);
     setCommits([]);
     setLoading(true);
     setError(null);
   };
 
+  // Function to fetch repository data from the API
   const fetchRepoData = async (owner) => {
-    // Fetch repository data for the given owner
     const repoRes = await fetch(`/api/users/${owner}/repos`);
     const repoData = await repoRes.json();
     if (!repoRes.ok) {
@@ -64,8 +64,8 @@ const RepoDetails = ({ owner }) => {
     return repoData;
   };
 
+  // Function to find a specific repository by name in the fetched data
   const findRepoByName = (repoData, repoName) => {
-    // Find the repository by its name in the fetched data
     const selectedRepo = repoData.find((repo) => repo.name === repoName);
     if (!selectedRepo) {
       throw new Error("Repository not found");
@@ -73,8 +73,8 @@ const RepoDetails = ({ owner }) => {
     return selectedRepo;
   };
 
+  // Function to fetch commits data from the API
   const fetchCommitsData = async (owner, repoName) => {
-    // Fetch commits for the specific repository
     const commitsRes = await fetch(`/api/repos/${owner}/${repoName}/commits`);
     const commitsData = await commitsRes.json();
     if (!commitsRes.ok) {
@@ -85,14 +85,12 @@ const RepoDetails = ({ owner }) => {
     }
     return commitsData;
   };
-
+  // Display a loading message while data is being fetched
   if (loading) {
-    // Show loading message while data is being fetched
     return <p className="loader-text">Loading repository details...</p>;
   }
-
+  // Display an error message if there was an issue fetching the data
   if (error) {
-    // Show error message if any error occurred during fetching
     return (
       <div className="centered-message">
         <p>Error: {error}</p>
@@ -102,9 +100,8 @@ const RepoDetails = ({ owner }) => {
       </div>
     );
   }
-
+  // Display a message if no repository details were found
   if (!repoDetails) {
-    // Show message if no repository details are found
     return <p className="loading-text">No repository details found</p>;
   }
 
@@ -115,7 +112,16 @@ const RepoDetails = ({ owner }) => {
       </button>
       <div className="card mb-4">
         <div className="card-body">
-          <h2 className="card-title">{repoDetails.name}</h2>
+          <h2 className="card-title">
+            <a
+              href={repoDetails.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "green", textDecoration: "underline" }}
+            >
+              {repoDetails.name}
+            </a>
+          </h2>
           <p className="card-text">{repoDetails.description}</p>
           <p className="card-text">
             <strong>Created at:</strong>{" "}

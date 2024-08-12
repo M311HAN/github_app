@@ -2,26 +2,29 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 import RepoDetails from "./RepoDetails";
 
+// Component to display user details and their repositories
 const UserDetails = () => {
-  // Extract the username from the URL
+  // Extract the username from the URL parameters
   const { username } = useParams();
-  // Hook to programmatically navigate
+  // Hook to navigate programmatically
   const navigate = useNavigate();
-  // State for storing user details
+  // State to store user details
   const [user, setUser] = useState(null);
-  // State for storing user repositories
+  // State to store user repositories
   const [repos, setRepos] = useState([]);
-  // Loading state for user details
+  // State to manage loading status for user details
   const [loadingUser, setLoadingUser] = useState(true);
-  // Loading state for repositories
+  // State to manage loading status for repositories
   const [loadingRepos, setLoadingRepos] = useState(true);
-  // State for handling errors
+  // State to manage error messages
   const [error, setError] = useState(null);
 
+  // Effect hook to fetch user details and repositories when the component mounts or when the username changes
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
-    // Fetch user details from the API
+
+    // Function to fetch user details from the API
     const fetchUserDetails = async () => {
       try {
         const res = await fetch(`/api/users/${username}`);
@@ -31,19 +34,18 @@ const UserDetails = () => {
             data.error || `Request failed with status code ${res.status}`
           );
         }
-        // Set user details
         setUser(data);
       } catch (error) {
         console.error("Error fetching user details:", error);
-        // Set error message
+        // Set error message if fetch fails
         setError(error.message);
       } finally {
-        // Stop loading user details
+        // Set loading status to false after fetching user details
         setLoadingUser(false);
       }
     };
 
-    // Fetch user repositories from the API
+    // Function to fetch user repositories from the API
     const fetchUserRepos = async () => {
       try {
         const res = await fetch(`/api/users/${username}/repos`);
@@ -53,13 +55,14 @@ const UserDetails = () => {
             data.error || `Request failed with status code ${res.status}`
           );
         }
-        // Set user repositories
+        // Ensure repos data is an array and set it
         setRepos(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Error fetching repositories:", error);
         setError(error.message);
         setRepos([]);
       } finally {
+        // Set loading status to false after fetching repositories
         setLoadingRepos(false);
       }
     };
@@ -71,14 +74,13 @@ const UserDetails = () => {
     setLoadingUser(true);
     setLoadingRepos(true);
 
-    // Fetch user details
+    // Fetch user details and repositories
     fetchUserDetails();
-    // Fetch user repositories
     fetchUserRepos();
-    // Re-run effect when the username changes
+    // Dependency array ensures effect runs when username changes
   }, [username]);
 
-  // Show loading state while fetching data
+  // Display a loading message while user details and repositories are being fetched
   if (loadingUser || loadingRepos) {
     return (
       <div className="centered-message">
@@ -90,7 +92,7 @@ const UserDetails = () => {
     );
   }
 
-  // Display error message if there is an error
+  // Display an error message if there was an issue fetching the data
   if (error) {
     return (
       <div className="centered-message">
@@ -101,8 +103,7 @@ const UserDetails = () => {
       </div>
     );
   }
-
-  // If user details are not found
+  // Display a message if no user details were found
   if (!user) {
     return <p className="centered-message">No user details found</p>;
   }
@@ -113,14 +114,39 @@ const UserDetails = () => {
         Back to Search
       </button>
       <div className="card mb-4">
-        <div className="card-body">
+        <div className="card-body d-flex">
           <img
             src={user.avatar_url}
             alt={`Avatar of ${user.login}`}
             className="img-thumbnail mb-3"
+            style={{
+              width: "200px",
+              height: "200px",
+              objectFit: "cover",
+              borderRadius: "50%",
+            }}
           />
-          <h1 className="card-title">{user.name}</h1>
-          <p className="card-text">{user.bio}</p>
+          <div className="ms-3">
+            <h1 className="card-title">{user.name || user.login}</h1>
+            {user.bio && <p className="card-text">{user.bio}</p>}
+            <p className="card-text">
+              <strong>{user.followers}</strong> Followers,{" "}
+              <strong>{user.following}</strong> Following
+            </p>
+            {user.location && (
+              <p className="card-text">
+                <i className="bi bi-geo-alt"></i> {user.location}
+              </p>
+            )}
+            <a
+              href={user.html_url}
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View GitHub Profile
+            </a>
+          </div>
         </div>
       </div>
 
