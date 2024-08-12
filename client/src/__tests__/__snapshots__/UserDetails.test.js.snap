@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="centered-message"
+  >
+    <div
+      class="loader"
+    />
+    <span
+      class="loader-text"
+    >
+      Loading user details and repositories...
+    </span>
+  </div>
+</DocumentFragment>
+`;

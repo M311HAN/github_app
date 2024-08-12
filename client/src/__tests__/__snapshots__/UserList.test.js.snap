@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container mt-5"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-md-4 mb-4"
+      >
+        <div
+          class="card h-100 shadow-sm"
+        >
+          <img
+            alt="Avatar of octocat"
+            class="card-img-top img-fluid"
+            src="https://avatars.githubusercontent.com/u/583231?v=4"
+            style="height: 150px; object-fit: cover; border-radius: 50%; margin: 20px auto; width: 150px;"
+          />
+          <div
+            class="card-body text-center"
+          >
+            <h5
+              class="card-title"
+            >
+              octocat
+            </h5>
+            <p
+              class="card-text"
+            >
+              ID: 1
+            </p>
+            <a
+              class="btn btn-success mb-2"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              GitHub Profile
+            </a>
+            <a
+              class="btn btn-link text-primary"
+              href="/users/octocat"
+            >
+              User's Page
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-4 mb-4"
+      >
+        <div
+          class="card h-100 shadow-sm"
+        >
+          <img
+            alt="Avatar of user2"
+            class="card-img-top img-fluid"
+            src="https://avatars.githubusercontent.com/u/2?v=4"
+            style="height: 150px; object-fit: cover; border-radius: 50%; margin: 20px auto; width: 150px;"
+          />
+          <div
+            class="card-body text-center"
+          >
+            <h5
+              class="card-title"
+            >
+              user2
+            </h5>
+            <p
+              class="card-text"
+            >
+              ID: 2
+            </p>
+            <a
+              class="btn btn-success mb-2"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              GitHub Profile
+            </a>
+            <a
+              class="btn btn-link text-primary"
+              href="/users/user2"
+            >
+              User's Page
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

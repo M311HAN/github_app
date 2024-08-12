@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="d-flex justify-content-center mt-5"
+  >
+    <div
+      class="card p-4 shadow"
+      style="width: 50%; background-color: rgb(52, 58, 64); border-radius: 10px;"
+    >
+      <form
+        class="d-flex"
+      >
+        <input
+          class="form-control me-2"
+          placeholder="Search GitHub User..."
+          style="border-radius: 5px; padding: 10px;"
+          type="text"
+          value=""
+        />
+        <button
+          class="btn btn-primary"
+          style="padding: 10px 20px; border-radius: 5px;"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

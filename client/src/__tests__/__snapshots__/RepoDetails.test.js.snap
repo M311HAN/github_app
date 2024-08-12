@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<DocumentFragment>
+  <p
+    class="loader-text"
+  >
+    Loading repository details...
+  </p>
+</DocumentFragment>
+`;
