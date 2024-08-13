@@ -66,6 +66,15 @@ Before you begin, ensure you have the following installed on your system:
 - [Node.js](https://nodejs.org/) (version 14.x or later)
 - [npm](https://www.npmjs.com/) (version 6.x or later)
 - [Git](https://git-scm.com/)
+- A `.env` file set up in the `server` directory.
+
+### Setting Up the .env File
+
+To run this project locally, you'll need to create a `.env` file inside the `server` directory with the following content:
+
+**Note:** The `.env` file is not included in this repository for security reasons and best practices. The `GITHUB_API_URL` is a public API endpoint, so it doesn't expose any sensitive information. You can find an example of the `.env` file setup in the screenshot below and how it should look:
+
+![env example](client/public/env-example.png)
 
 ## Installation
 To install and run the application locally:
