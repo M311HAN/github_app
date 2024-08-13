@@ -3,6 +3,7 @@
 ![github app](client/public/githubapp.png)
 
 ## Table of Contents
+
 - [Description](#description)
 - [Project Structure](#project-structure)
 - [Features](#features)
@@ -19,7 +20,7 @@
 
 This is a fullstack app that allows users to search for GitHub profiles, view detailed information about users, and explore their repositories and latest commits. The app interacts with the GitHub API to fetch and display the necessary data.
 
-All the search-and-fetch functionality is achieved via the GitHub API: https://api.github.com/. In this project we only concern ourselves with publicly accessible API endpoints. 
+All the search-and-fetch functionality is achieved via the GitHub API: https://api.github.com/. In this project we only concern ourselves with publicly accessible API endpoints.
 
 You can also see how much tokens you have used up by going onto this link https://api.github.com/rate_limit in your browser, you will have a maximum of 60 tokens which will re-set at a certain amount of time.
 
@@ -36,10 +37,12 @@ This is my second project using both React and Express to create a Fullstack app
 This application is divided into two main directories:
 
 1. Client:
+
 - The client directory contains the front-end part of the application. It includes all the code related to the user interface (UI) and user experience (UX), typically built using modern front-end frameworks or libraries such as React, Angular, or Vue.js.
 - This part of the application is responsible for interacting with users, capturing input, and displaying data retrieved from the back-end.
 
 2. Server:
+
 - The server directory houses the back-end of the application. It includes the server-side logic, API endpoints, database interactions, and any other operations that occur on the server.
 - This part of the application handles requests from the front-end, processes data, communicates with external APIs (like GitHub's API), and returns the necessary data to the front-end for display.
 
@@ -72,64 +75,76 @@ Before you begin, ensure you have the following installed on your system:
 
 To run this project locally, you'll need to create a `.env` file inside the `server` directory with the following content:
 
+```bash
+GITHUB_API_URL=https://api.github.com
+PORT=8080
+```
+
 **Note:** The `.env` file is not included in this repository for security reasons and best practices. The `GITHUB_API_URL` is a public API endpoint, so it doesn't expose any sensitive information. You can find an example of the `.env` file setup in the screenshot below and how it should look:
 
 ![env example](client/public/env-example.png)
 
 ## Installation
+
 To install and run the application locally:
 
 ### Setup Instructions
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/M311HAN/github_app.git
-    ```
+   ```
 
 2. Navigate to the project directory:
-    ```bash
-    cd github_app
-    ```
+
+   ```bash
+   cd github_app
+   ```
 
 3. Install the dependencies:
-    ```bash
-    # Install server-side dependencies
-    cd server
-    npm install
-    ```
 
-4.  ```bash
-    # Install client-side dependencies
-    cd client
-    npm install
-    ```
+   ```bash
+   # Install server-side dependencies
+   cd server
+   npm install
+   ```
+
+4. ```bash
+   # Install client-side dependencies
+   cd client
+   npm install
+   ```
+
 ### Launching the App
 
 ### Running the Backend Server
- 
+
 1. Navigate to the server directory:
-    ```bash
-    cd server
-    ```
+
+   ```bash
+   cd server
+   ```
 
 2. Start the server-side with nodemon:
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   ```
 
 The server should now be running on `http://localhost:8080`.
 
 ### Running the Frontend
 
 1. Navigate to the client directory:
-    ```bash
-    cd client
-    ```
+
+   ```bash
+   cd client
+   ```
 
 2. Start the React app:
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
 The frontend should now be running on `http://localhost:3000`.
 
@@ -166,6 +181,7 @@ Endpoint: `/rate_limit`
 - Example: `/rate_limit`
 
 ## Usage
+
 1. Search for a User:
 
 - Use the search bar on the homepage to enter a GitHub username.
@@ -184,7 +200,6 @@ Endpoint: `/rate_limit`
 4. Navigate Back:
 
 - Use the back button to return to the previous page or search for another user.
-
 
 ## Components
 
